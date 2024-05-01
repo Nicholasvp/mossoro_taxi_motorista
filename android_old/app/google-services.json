@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "744380834306",
+    "firebase_url": "https://mossorotaxi-c7365-default-rtdb.firebaseio.com",
+    "project_id": "mossorotaxi-c7365",
+    "storage_bucket": "mossorotaxi-c7365.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744380834306:android:260296bd7aee892b083d1b",
+        "android_client_info": {
+          "package_name": "br.com.prefeiturademossoro.mossorotaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744380834306-8oukn9sf75g33650rfvc2c0rt5999rdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeT2FDXMDVUgIx8BF7szchjBO5PjFsFUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744380834306-8oukn9sf75g33650rfvc2c0rt5999rdu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744380834306-jqf6qgpu10g4lh9173dpvevrg6hpf3n8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.prefeiturademossoro.mossorotaxi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744380834306:android:fc8e9c445e9af0d6083d1b",
+        "android_client_info": {
+          "package_name": "br.com.prefeiturademossoro.mossorotaximotorista"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744380834306-8oukn9sf75g33650rfvc2c0rt5999rdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeT2FDXMDVUgIx8BF7szchjBO5PjFsFUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744380834306-8oukn9sf75g33650rfvc2c0rt5999rdu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "744380834306-jqf6qgpu10g4lh9173dpvevrg6hpf3n8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.prefeiturademossoro.mossorotaxi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
