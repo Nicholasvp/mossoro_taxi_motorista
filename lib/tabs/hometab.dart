@@ -48,10 +48,15 @@ class _HomeTabState extends State<HomeTab> {
       });
 
       LatLng pos = LatLng(position.latitude, position.longitude);
-      // mapController!.animateCamera(CameraUpdate.newLatLng(pos));
+      mapController!.animateCamera(CameraUpdate.newLatLng(pos));
       return position;
     } else {
       geolocationStatus = await Geolocator.requestPermission();
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
+      setState(() {
+        currentPosition = position;
+      });
     }
     return null;
   }
@@ -108,6 +113,7 @@ class _HomeTabState extends State<HomeTab> {
           initialCameraPosition: googlePlex,
           onMapCreated: (GoogleMapController controller) {
             _controller.complete(controller);
+            print('Map created');
             mapController = controller;
 
             getCurrentPosition();
