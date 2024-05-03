@@ -168,8 +168,8 @@ class _NewTripPageState extends State<NewTripPage> {
                             onTap: () async {
                               String url =
                                   'tel:${widget.tripDetails.riderPhone}';
-                              if (await canLaunch(url)) {
-                                await launch(url);
+                              if (await canLaunchUrl(Uri.parse(url))) {
+                                await launchUrl(Uri.parse(url));
                               }
                             },
                           ),

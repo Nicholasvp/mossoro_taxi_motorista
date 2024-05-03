@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Brand-Regular',
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          primaryColor: Colors.blue,
         ),
         initialRoute:
             (currentFirebaseUser == null) ? LoginPage.id : MainPage.id,
