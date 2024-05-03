@@ -14,18 +14,15 @@ class PushNotificationService {
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 
   Future initialize(context) async {
-    if (Platform.isIOS) {
-      firebaseMessaging.requestPermission();
-    }
-
-    // firebaseMessaging.getInitialMessage().then(
-    //       (value) =>
-    //          {
-    //           _resolved = true;
-    //           initialMessage = value?.data.toString()
-    //         },
-
-    //     );
+    firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       fetchRideInfo(getRideID(message.toMap()), context);

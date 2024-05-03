@@ -76,6 +76,7 @@ class _HomeTabState extends State<HomeTab> {
     DatabaseReference driversAvailableRef = FirebaseDatabase.instance
         .ref()
         .child('driversAvailable/${currentFirebaseUser!.uid}');
+
     driversAvailableRef.once().then((DatabaseEvent event) {
       if (event.snapshot.value != null) {
         getLocationUpdates();
@@ -88,10 +89,10 @@ class _HomeTabState extends State<HomeTab> {
       }
     });
 
-    // PushNotificationService pushNotificationService = PushNotificationService();
+    PushNotificationService pushNotificationService = PushNotificationService();
 
-    // pushNotificationService.initialize(context);
-    // pushNotificationService.getToken();
+    pushNotificationService.initialize(context);
+    pushNotificationService.getToken();
   }
 
   @override
