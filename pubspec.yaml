@@ -32,10 +32,10 @@ dependencies:
   firebase_core: 
   firebase_auth: 
   firebase_database: 
-  connectivity: 
+  connectivity_plus: 
   google_maps_flutter: 
   outline_material_icons: 
-  geolocator: ^10.0.0
+  geolocator:
   http: 
   provider: 
   flutter_polyline_points: 

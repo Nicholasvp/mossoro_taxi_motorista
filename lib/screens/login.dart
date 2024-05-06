@@ -1,10 +1,10 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:mossorotaximotorista/brand_colors.dart';
 import 'package:mossorotaximotorista/screens/mainpage.dart';
 import 'package:mossorotaximotorista/screens/registration.dart';
 import 'package:mossorotaximotorista/screens/resetpasswordpage.dart';
 import 'package:mossorotaximotorista/widgets/ProgressDialog.dart';
 import 'package:mossorotaximotorista/widgets/TaxiButton.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -176,8 +176,8 @@ class _LoginPageState extends State<LoginPage> {
 
                           var connectivityResult =
                               await Connectivity().checkConnectivity();
-                          if (connectivityResult != ConnectivityResult.mobile &&
-                              connectivityResult != ConnectivityResult.wifi) {
+                          if (connectivityResult[0] != ConnectivityResult.mobile &&
+                              connectivityResult[0] != ConnectivityResult.wifi) {
                             showSnackBar('Sem conexão com internet.');
                             return;
                           }

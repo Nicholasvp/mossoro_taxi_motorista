@@ -4,7 +4,7 @@ import 'package:mossorotaximotorista/screens/login.dart';
 import 'package:mossorotaximotorista/screens/vehicleinfo.dart';
 import 'package:mossorotaximotorista/widgets/ProgressDialog.dart';
 import 'package:mossorotaximotorista/widgets/TaxiButton.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
