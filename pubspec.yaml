@@ -3,7 +3,7 @@ description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -25,33 +25,31 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: 
-  firebase_core: 
-  firebase_auth: 
-  firebase_database: 
-  connectivity_plus: 
-  google_maps_flutter: 
-  outline_material_icons: 
-  geolocator:
-  http: 
-  provider: 
-  flutter_polyline_points: 
-  font_awesome_flutter: 
-  animated_text_kit: 
-  flutter_geofire: 
-  firebase_messaging: 
-  assets_audio_player: 
-  toast: 
-  maps_toolkit: 
-  intl: 
-  flutter_launcher_icons: 
-  flutter_native_splash: 
-  url_launcher: 
-  rating_dialog: 
-
+  cupertino_icons:
+  firebase_core:
+  firebase_auth:
+  firebase_database:
+  connectivity_plus:
+  google_maps_flutter:
+  outline_material_icons:
+  geolocator: ^11.0.0
+  http:
+  provider:
+  flutter_polyline_points:
+  font_awesome_flutter:
+  animated_text_kit:
+  flutter_geofire:
+  firebase_messaging:
+  assets_audio_player:
+  toast:
+  maps_toolkit:
+  intl:
+  flutter_launcher_icons:
+  flutter_native_splash:
+  url_launcher:
+  rating_dialog:
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +60,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -73,9 +70,9 @@ flutter:
     - sounds/
 
   fonts:
-      - family: Brand-Bold
-        fonts:
-          - asset: fonts/bolt-semibold.ttf
-      - family: Brand-Regular
-        fonts:
-          - asset: fonts/bolt-regular.ttf
+    - family: Brand-Bold
+      fonts:
+        - asset: fonts/bolt-semibold.ttf
+    - family: Brand-Regular
+      fonts:
+        - asset: fonts/bolt-regular.ttf
