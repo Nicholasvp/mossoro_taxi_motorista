@@ -46,22 +46,24 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
-    
-    final User? user = (await _auth.signInWithEmailAndPassword(
+    final User? user = (await _auth
+            .signInWithEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,
-    ).catchError((ex) {
-        Navigator.pop(context);
-        if (ex.code == "user-not-found") {
-          showSnackBar('Usuário não encontrado.');
-        } else if (ex.code == "invalid-email") {
-          showSnackBar('E-mail inválido.');
-        } else if (ex.code == 'wrong-password') {
-          showSnackBar('Senha inválida.');
-        } else {
-          showSnackBar(ex.toString());
-        }
-    })).user;
+    )
+            .catchError((ex) {
+      Navigator.pop(context);
+      if (ex.code == "user-not-found") {
+        showSnackBar('Usuário não encontrado.');
+      } else if (ex.code == "invalid-email") {
+        showSnackBar('E-mail inválido.');
+      } else if (ex.code == 'wrong-password') {
+        showSnackBar('Senha inválida.');
+      } else {
+        showSnackBar(ex.toString());
+      }
+    }))
+        .user;
     if (user != null) {
       // verify login
       DatabaseReference userRef =
@@ -136,8 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             labelStyle:
                                 TextStyle(fontSize: 14.0, color: Colors.black),
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 10.0)
-                        ),
+                                TextStyle(color: Colors.grey, fontSize: 10.0)),
                         style: TextStyle(fontSize: 14),
                       ),
                       SizedBox(
@@ -176,8 +177,10 @@ class _LoginPageState extends State<LoginPage> {
 
                           var connectivityResult =
                               await Connectivity().checkConnectivity();
-                          if (connectivityResult[0] != ConnectivityResult.mobile &&
-                              connectivityResult[0] != ConnectivityResult.wifi) {
+                          if (connectivityResult[0] !=
+                                  ConnectivityResult.mobile &&
+                              connectivityResult[0] !=
+                                  ConnectivityResult.wifi) {
                             showSnackBar('Sem conexão com internet.');
                             return;
                           }

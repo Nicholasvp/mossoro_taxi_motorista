@@ -3,7 +3,7 @@ import 'package:mossorotaximotorista/brand_colors.dart';
 
 class TaxiButton extends StatelessWidget {
   final String title;
-  final Color color;
+  final Color? color;
   final VoidCallback onPressed;
 
   TaxiButton(
@@ -14,16 +14,21 @@ class TaxiButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: BrandColors.colorCampanha,
+        backgroundColor: color ?? BrandColors.colorCampanha,
         foregroundColor: Colors.white,
-        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+        padding: EdgeInsets.symmetric(vertical: 15),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 18, fontFamily: 'Brand-Bold'),      
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 18, fontFamily: 'Brand-Bold'),
+          ),
+        ],
       ),
     );
   }

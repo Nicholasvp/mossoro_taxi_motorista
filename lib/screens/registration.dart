@@ -276,13 +276,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         onPressed: () async {
                           //check network availability
 
-                          var connectivityResult =
-                              await Connectivity().checkConnectivity();
-                          if (connectivityResult != ConnectivityResult.mobile &&
-                              connectivityResult != ConnectivityResult.wifi) {
-                            showSnackBar('Sem conexão com internet.');
-                            return;
-                          }
+                          // var connectivityResult =
+                          //     await Connectivity().checkConnectivity();
+                          // if (connectivityResult != ConnectivityResult.mobile &&
+                          //     connectivityResult != ConnectivityResult.wifi) {
+                          //   showSnackBar('Sem conexão com internet.');
+                          //   return;
+                          // }
 
                           if (fullNameController.text.length < 3) {
                             showSnackBar('Forneça um nome completo válido');

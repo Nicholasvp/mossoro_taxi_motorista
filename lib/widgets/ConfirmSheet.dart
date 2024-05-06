@@ -27,7 +27,7 @@ class ConfirmSheet extends StatelessWidget {
           )
         ],
       ),
-      height: 220,
+      height: 300,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
         child: Column(
