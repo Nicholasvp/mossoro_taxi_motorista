@@ -137,7 +137,7 @@ class _NewTripPageState extends State<NewTripPage> {
                   )
                 ],
               ),
-              height: Platform.isIOS ? 280 : 255,
+              height: 280,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24, vertical: 18),
                 child: Column(
@@ -273,8 +273,7 @@ class _NewTripPageState extends State<NewTripPage> {
 
   void acceptTrip() {
     String rideID = widget.tripDetails.rideID;
-    rideRef =
-        FirebaseDatabase.instance.ref().child('rideRequest/$rideID');
+    rideRef = FirebaseDatabase.instance.ref().child('rideRequest/$rideID');
 
     rideRef!.child('status').set('accepted');
     rideRef!.child('driver_name').set(currentDriverInfo!.fullName);

@@ -25,7 +25,8 @@ class _HomeTabState extends State<HomeTab> {
   DatabaseReference? tripRequestRef;
 
   var geoLocator = Geolocator();
-  var locationSettings = LocationSettings(accuracy: LocationAccuracy.bestForNavigation, distanceFilter: 4);
+  var locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.bestForNavigation, distanceFilter: 4);
 
   String availabilityTitle = 'OFFLINE';
   Color availabilityColor = Colors.red;
@@ -38,8 +39,10 @@ class _HomeTabState extends State<HomeTab> {
       return Future.error('Location services are disabled.');
     }
     LocationPermission geolocationStatus = await Geolocator.checkPermission();
-    if (geolocationStatus == LocationPermission.always || geolocationStatus == LocationPermission.whileInUse) {
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+    if (geolocationStatus == LocationPermission.always ||
+        geolocationStatus == LocationPermission.whileInUse) {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
       setState(() {
         currentPosition = position;
       });
@@ -49,7 +52,8 @@ class _HomeTabState extends State<HomeTab> {
       return position;
     } else {
       geolocationStatus = await Geolocator.requestPermission();
-      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.bestForNavigation);
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.bestForNavigation);
       setState(() {
         currentPosition = position;
       });
@@ -59,7 +63,9 @@ class _HomeTabState extends State<HomeTab> {
 
   void getCurrentDriverInfo() async {
     currentFirebaseUser = await FirebaseAuth.instance.currentUser;
-    DatabaseReference driverRef = FirebaseDatabase.instance.ref().child('drivers/${currentFirebaseUser!.uid}');
+    DatabaseReference driverRef = FirebaseDatabase.instance
+        .ref()
+        .child('drivers/${currentFirebaseUser!.uid}');
     driverRef.once().then((DatabaseEvent event) {
       if (event.snapshot.value != null) {
         currentDriverInfo = Driver.fromSnapshot(event.snapshot);
@@ -67,10 +73,12 @@ class _HomeTabState extends State<HomeTab> {
       }
     });
 
-    DatabaseReference driversAvailableRef = FirebaseDatabase.instance.ref().child('driversAvailable/${currentFirebaseUser!.uid}');
+    DatabaseReference driversAvailableRef = FirebaseDatabase.instance
+        .ref()
+        .child('driversAvailable/${currentFirebaseUser!.uid}');
 
     driversAvailableRef.once().then((DatabaseEvent event) {
-      if (event.snapshot.value != null) {
+      if (true) {
         getLocationUpdates();
         goOnline();
         setState(() {
@@ -189,9 +197,12 @@ class _HomeTabState extends State<HomeTab> {
     if (currentPosition == null) {
       currentPosition = await getCurrentPosition();
     }
-    Geofire.setLocation(currentFirebaseUser!.uid, currentPosition!.latitude, currentPosition!.longitude);
+    Geofire.setLocation(currentFirebaseUser!.uid, currentPosition!.latitude,
+        currentPosition!.longitude);
 
-    tripRequestRef = FirebaseDatabase.instance.ref().child('drivers/${currentFirebaseUser!.uid}/newtrip');
+    tripRequestRef = FirebaseDatabase.instance
+        .ref()
+        .child('drivers/${currentFirebaseUser!.uid}/newtrip');
     tripRequestRef!.set('waiting');
 
     tripRequestRef!.onValue.listen((event) {});
@@ -205,13 +216,16 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   void getLocationUpdates() {
-    homeTabPositionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen((Position position) {
+    homeTabPositionStream =
+        Geolocator.getPositionStream(locationSettings: locationSettings)
+            .listen((Position position) {
       setState(() {
         currentPosition = position;
       });
 
       if (isAvailable) {
-        Geofire.setLocation(currentFirebaseUser!.uid, position.latitude, position.longitude);
+        Geofire.setLocation(
+            currentFirebaseUser!.uid, position.latitude, position.longitude);
       }
 
       LatLng pos = LatLng(position.latitude, position.longitude);
