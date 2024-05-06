@@ -274,7 +274,7 @@ class _NewTripPageState extends State<NewTripPage> {
   void acceptTrip() {
     String rideID = widget.tripDetails.rideID;
     rideRef =
-        FirebaseDatabase.instance.reference().child('rideRequest/$rideID');
+        FirebaseDatabase.instance.ref().child('rideRequest/$rideID');
 
     rideRef!.child('status').set('accepted');
     rideRef!.child('driver_name').set(currentDriverInfo!.fullName);
@@ -291,7 +291,7 @@ class _NewTripPageState extends State<NewTripPage> {
     rideRef!.child('driver_location').set(locationMap);
 
     DatabaseReference historyRef = FirebaseDatabase.instance
-        .reference()
+        .ref()
         .child('drivers/${currentFirebaseUser!.uid}/history/$rideID');
     historyRef.set(true);
   }

@@ -37,6 +37,12 @@ class _HistoryPageState extends State<HistoryPage> {
           },
           icon: Icon(Icons.keyboard_arrow_left),
         ),
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontFamily: 'Brand-Bold',
+          color: Colors.white
+        ),
+        foregroundColor: Colors.white,
       ),
       body: ListView.separated(
         padding: EdgeInsets.all(0),

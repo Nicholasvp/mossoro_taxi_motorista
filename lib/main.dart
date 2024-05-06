@@ -5,7 +5,6 @@ import 'package:mossorotaximotorista/screens/login.dart';
 import 'package:mossorotaximotorista/screens/mainpage.dart';
 import 'package:mossorotaximotorista/screens/registration.dart';
 import 'package:mossorotaximotorista/screens/vehicleinfo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

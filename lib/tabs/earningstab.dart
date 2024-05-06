@@ -1,7 +1,4 @@
 import 'package:mossorotaximotorista/brand_colors.dart';
-import 'package:mossorotaximotorista/widgets/TaxiButton.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mossorotaximotorista/screens/login.dart';
 import 'package:mossorotaximotorista/dataprovider.dart';
 import 'package:mossorotaximotorista/helpers/helpermethods.dart';
 import 'package:mossorotaximotorista/screens/historypage.dart';

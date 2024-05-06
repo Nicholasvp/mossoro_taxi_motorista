@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mossorotaximotorista/brand_colors.dart';
 
 class TaxiButton extends StatelessWidget {
   final String title;
@@ -12,14 +13,17 @@ class TaxiButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Container(
-        height: 50,
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 18, fontFamily: 'Brand-Bold'),
-          ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: BrandColors.colorCampanha,
+        foregroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
+      ),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: 18, fontFamily: 'Brand-Bold'),      
       ),
     );
   }

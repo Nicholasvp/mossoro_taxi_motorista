@@ -8,7 +8,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   static const String id = 'login';
@@ -47,37 +46,37 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
-    try {
-      final User? user = (await _auth.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      ))
-          .user;
-      if (user != null) {
-        // verify login
-        DatabaseReference userRef =
-            FirebaseDatabase.instance.ref().child('drivers/${user.uid}');
-        userRef.once().then((DatabaseEvent snapshot) {
-          if (snapshot.snapshot.value != null) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, MainPage.id, (route) => false);
-          } else {
-            FirebaseAuth.instance.signOut();
-            Navigator.pop(context);
-            showSnackBar(
-                "Usuário cadastrado como passageiro. Para acessar realize seu cadastro como motorista.");
-          }
-        });
-      }
-    } catch (ex) {
-      Navigator.pop(context);
-      if (ex == 'ERROR_USER_NOT_FOUND') {
-        showSnackBar('Usuário não encontrado.');
-      } else if (ex == 'ERROR_WRONG_PASSWORD') {
-        showSnackBar('Senha inválida.');
-      } else {
-        showSnackBar(ex.toString());
-      }
+    
+    final User? user = (await _auth.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    ).catchError((ex) {
+        Navigator.pop(context);
+        if (ex.code == "user-not-found") {
+          showSnackBar('Usuário não encontrado.');
+        } else if (ex.code == "invalid-email") {
+          showSnackBar('E-mail inválido.');
+        } else if (ex.code == 'wrong-password') {
+          showSnackBar('Senha inválida.');
+        } else {
+          showSnackBar(ex.toString());
+        }
+    })).user;
+    if (user != null) {
+      // verify login
+      DatabaseReference userRef =
+          FirebaseDatabase.instance.ref().child('drivers/${user.uid}');
+      userRef.once().then((DatabaseEvent snapshot) {
+        if (snapshot.snapshot.value != null) {
+          Navigator.pushNamedAndRemoveUntil(
+              context, MainPage.id, (route) => false);
+        } else {
+          FirebaseAuth.instance.signOut();
+          Navigator.pop(context);
+          showSnackBar(
+              "Usuário cadastrado como passageiro. Para acessar realize seu cadastro como motorista.");
+        }
+      });
     }
   }
 
@@ -137,7 +136,8 @@ class _LoginPageState extends State<LoginPage> {
                             labelStyle:
                                 TextStyle(fontSize: 14.0, color: Colors.black),
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 10.0)),
+                                TextStyle(color: Colors.grey, fontSize: 10.0)
+                        ),
                         style: TextStyle(fontSize: 14),
                       ),
                       SizedBox(

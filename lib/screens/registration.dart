@@ -8,7 +8,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class RegistrationPage extends StatefulWidget {
   static const String id = 'register';
@@ -57,20 +56,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
             .createUserWithEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,
-    )
-            .catchError((ex) {
+    ).catchError((ex) {
       //check error and display message
       Navigator.pop(context);
-      PlatformException thisEx = ex;
-      showSnackBar(thisEx.message.toString());
-    }))
-        .user;
+      if (ex.code == "email-already-in-use") {
+        showSnackBar("O endereço de e-mail já está em uso por outra conta.");
+      }
+    })
+    ).user;
 
     Navigator.pop(context);
     // check if user registration is successful
     if (user != null) {
       DatabaseReference newUserRef =
-          FirebaseDatabase.instance.reference().child('drivers/${user.uid}');
+          FirebaseDatabase.instance.ref().child('drivers/${user.uid}');
 
       //Prepare data to be saved on users table
       Map userMap = {
@@ -319,12 +318,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     ],
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
+                TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: BrandColors.colorCampanha,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
                           context, LoginPage.id, (route) => false);
-                    },
-                    child: Text('Já possui uma conta? Entrar')),
+                  },
+                  child: Text('Já possui uma conta? Entrar'),
+                ),
               ],
             ),
           ),

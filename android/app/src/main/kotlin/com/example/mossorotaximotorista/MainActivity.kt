@@ -1,4 +1,4 @@
-package com.example.mossorotaximotorista
+package br.com.prefeiturademossoro.mossorotaximotorista
 
 import io.flutter.embedding.android.FlutterActivity
 
