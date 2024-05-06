@@ -56,14 +56,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
             .createUserWithEmailAndPassword(
       email: emailController.text,
       password: passwordController.text,
-    ).catchError((ex) {
+    )
+            .catchError((ex) {
       //check error and display message
       Navigator.pop(context);
       if (ex.code == "email-already-in-use") {
         showSnackBar("O endereço de e-mail já está em uso por outra conta.");
       }
-    })
-    ).user;
+    }))
+        .user;
 
     Navigator.pop(context);
     // check if user registration is successful
@@ -324,7 +325,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
-                          context, LoginPage.id, (route) => false);
+                        context, LoginPage.id, (route) => false);
                   },
                   child: Text('Já possui uma conta? Entrar'),
                 ),
